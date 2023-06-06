@@ -21,26 +21,20 @@ class Trigon:
     def __init__(self, *args):
         self.args = args
 
+        if len(args) != 3:
+            raise IndexError(f"Передано {len(args)} аргументов, а ожидается 3")
 
-def initial(self):
-    """
-    Функция для обработки ошибок при указании сторон треугольника
-    :return: Возвращает понятные пользователю ошибки в случаях:
-    - Если хотя бы одна сторона передана не числом
-    - Если хотя бы одна сторона передана нулем или отрицательным числом
-    - Если не соблюдается неравенство треугольника
-    - Если передано не 3 аргумента
-    """
-    n = len(self.args)
-    for i in self.args:
-        if type(i) != str():
+        self.a = args[0]
+        self.b = args[1]
+        self.c = args[2]
+
+        if not isinstance(self.a, int) or not isinstance(self.b, int) or not isinstance(self.c, int):
             raise TypeError('Стороны должны быть числами')
-        elif i < 1:
+        elif self.a < 1 or self.b < 1 or self.c < 1:
             raise ValueError('Стороны должны быть положительными')
-    if self.args[2] >= self.args[1] + self.args[0]:
-        raise Exception('Не треугольник')
-    if n != 3:
-        raise IndexError(f"Передано {n} аргументов, а ожидается 3")
+        elif self.c >= self.b + self.a:
+            raise Exception('Не треугольник')
+
 
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
