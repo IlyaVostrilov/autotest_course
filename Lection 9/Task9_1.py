@@ -5,12 +5,11 @@
 from pathlib import Path
 
 
-f1 = open(Path('test_file/task1_data.txt'), 'r', encoding='utf-8')
-f2 = open(Path('test_file/task1_answer.txt'), 'w', encoding='utf-8')
-for line in f1.readlines():
-    norm_line = ''.join([i for i in line if not i.isdigit()])
-    f2.write(norm_line)
-f2.close()
+with open(Path('test_file/task1_data.txt'), 'r', encoding='utf-8') as f1:
+    with open(Path('test_file/task1_answer.txt'), 'w', encoding='utf-8') as f2:
+        for line in f1.readlines():
+            norm_line = ''.join([i for i in line if not i.isdigit()])
+            f2.write(norm_line)
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
 
